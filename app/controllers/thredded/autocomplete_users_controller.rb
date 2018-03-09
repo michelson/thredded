@@ -7,9 +7,9 @@ module Thredded
     def index
       authorize_creating Thredded::PrivateTopicForm.new(user: thredded_current_user).private_topic
       users = params.key?(:q) ? users_by_prefix : users_by_ids
-      render json: {
-        results: users.map { |user| user_to_autocomplete_result(user) }
-      }
+      render json: users.map { |user| user_to_autocomplete_result(user) }
+        #results: users.map { |user| user_to_autocomplete_result(user) }
+      
     end
 
     protected
@@ -26,15 +26,11 @@ module Thredded
     private
 
     def users_by_prefix
-      query = params[:q].to_s.strip
+      query = params[:q][:term] #.to_s.strip
       if query.length >= Thredded.autocomplete_min_length
         if Thredded.autocomplete_proc
           Thredded.autocomplete_proc.call(query)
-        #User.search( query, 
-        #  fields: [:name],
-        #  match: :word_start,
-        #  page: 1, per_page: 50 
-        #)
+        # User.search( query, fields: [:name], match: :word_start, page: 1, per_page: 50 )
         else
           DbTextSearch::CaseInsensitive.new(users_scope, Thredded.user_name_column).prefix(query)
           .where.not(id: thredded_current_user.id)

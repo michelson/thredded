@@ -19,6 +19,7 @@ module Thredded
     end
 
     def create
+
       @post_form = Thredded::PrivatePostForm.new(
         user: thredded_current_user, topic: parent_topic, post_params: new_private_post_params
       )

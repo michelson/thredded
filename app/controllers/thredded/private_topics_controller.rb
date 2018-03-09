@@ -54,6 +54,7 @@ module Thredded
       if @private_topic.save
         redirect_to @private_topic.private_topic
       else
+        flash[:errors] =  @private_topic.errors.full_messages
         render :new
       end
     end

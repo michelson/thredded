@@ -39,8 +39,9 @@ module Thredded
 
     def save
       @user_ids ||= []
-      @user_ids += Thredded.user_class.where(Thredded.user_name_column => parse_names(user_names)).pluck(:id)
-
+      
+      #@user_ids += Thredded.user_class.where(Thredded.user_name_column => parse_names(user_names)).pluck(:id)
+      @user_ids += User.search( user_names, fields: [:name], match: :word, page: 1, per_page: 50 ).results.map(&:id)
       return false unless valid?
 
       ActiveRecord::Base.transaction do

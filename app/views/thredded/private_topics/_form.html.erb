@@ -23,6 +23,12 @@
                          rows: 1 %>
     </li>
 
+    <li>
+      <%= form.select :user_names, [], {}, multiple:class: "xselect", :data=> {xhr: thredded.autocomplete_users_path, "resource-type"=> "user"} %>
+
+      
+    </li>
+
     <%= render 'thredded/posts_common/form/content',
                form: form,
                content_label: t('thredded.private_topics.form.content_label'),
