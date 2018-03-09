@@ -53,7 +53,9 @@ module Thredded
     :routes_id_constraint,
     :user_display_name_method,
     :user_name_column,
-    :user_path
+    :user_path,
+    :search,
+    :autocomplete_proc
 
   # @return [Symbol] The name of the method used by Thredded controllers and views to fetch the currently signed-in user
   mattr_accessor :current_user_method
