@@ -41,7 +41,7 @@ module Thredded
         moderation_state: params[:moderation_state],
         moderator: thredded_current_user,
       ).id
-      redirect_back fallback_location: pending_moderation_path
+      redirect_back fallback_location: thredded.pending_moderation_path
     end
 
     def users
@@ -70,7 +70,7 @@ module Thredded
       return head(:bad_request) unless Thredded::UserDetail.moderation_states.include?(params[:moderation_state])
       user = Thredded.user_class.find(params[:id])
       user.thredded_user_detail.update!(moderation_state: params[:moderation_state])
-      redirect_back fallback_location: user_moderation_path(user.id)
+      redirect_back fallback_location: thredded.user_moderation_path(user.id)
     end
 
     private

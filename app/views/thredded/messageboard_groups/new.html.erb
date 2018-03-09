@@ -1,5 +1,6 @@
 <% content_for :thredded_page_title, t('thredded.messageboard_group.create') %>
 <% content_for :thredded_page_id, 'thredded--messageboard-groups-new' %>
+
 <% content_for :thredded_breadcrumbs do %>
   <ul class="thredded--navigation-breadcrumbs">
     <li class="thredded--navigation-breadcrumbs--item-no-link">
@@ -10,7 +11,7 @@
 
 <%= thredded_page do %>
   <section class="thredded--main-section">
-    <%= form_for @messageboard_group, html: { class: 'thredded--form' } do |f| %>
+    <%= form_for @messageboard_group, url: thredded.messageboard_groups_path(@messageboard_group),  html: { class: 'thredded--form' } do |f| %>
       <ul class="thredded--form-list">
         <li>
           <%= f.label :name %>

@@ -3,7 +3,7 @@
 <header>
   <h2 class="thredded--post--topic">
     <%=
-      topic_link = link_to(topic.title, post.permalink_path)
+      topic_link = link_to(topic.title, post.thredded.permalink_path)
       if topic.first_post == post.to_model
         t 'thredded.users.started_topic_html', topic_link: topic_link
       else

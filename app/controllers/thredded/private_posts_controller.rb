@@ -24,7 +24,7 @@ module Thredded
       )
       authorize_creating @post_form.post
       if @post_form.save
-        redirect_to post_path(@post_form.post, user: thredded_current_user)
+        redirect_to thredded.post_path(@post_form.post, user: thredded_current_user)
       else
         render :new
       end
@@ -41,7 +41,7 @@ module Thredded
       authorize post, :update?
       post.update(new_private_post_params)
 
-      redirect_to post_path(post, user: thredded_current_user)
+      redirect_to thredded.post_path(post, user: thredded_current_user)
     end
 
     def destroy
@@ -71,7 +71,7 @@ module Thredded
     end
 
     def after_mark_as_unread
-      redirect_to private_topics_path
+      redirect_to thredded.private_topics_path
     end
 
     def topic

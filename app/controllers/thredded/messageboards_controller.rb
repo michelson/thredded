@@ -21,7 +21,7 @@ module Thredded
       @messageboard = Thredded::Messageboard.new(messageboard_params)
       authorize_creating @messageboard
       if Thredded::CreateMessageboard.new(@messageboard, thredded_current_user).run
-        redirect_to root_path
+        redirect_to thredded.root_path
       else
         render :new
       end
@@ -36,7 +36,7 @@ module Thredded
       @messageboard = Thredded::Messageboard.friendly_find!(params[:id])
       authorize @messageboard, :update?
       if @messageboard.update(messageboard_params)
-        redirect_to messageboard_topics_path(@messageboard), notice: I18n.t('thredded.messageboard.updated_notice')
+        redirect_to thredded.messageboard_topics_path(@messageboard), notice: I18n.t('thredded.messageboard.updated_notice')
       else
         render :edit
       end

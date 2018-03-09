@@ -42,7 +42,7 @@ module Thredded
       authorize post, :update?
       post.update(new_post_params)
 
-      redirect_to post_path(post, user: thredded_current_user)
+      redirect_to thredded.post_path(post, user: thredded_current_user)
     end
 
     def destroy
@@ -72,7 +72,7 @@ module Thredded
     end
 
     def after_mark_as_unread
-      redirect_to messageboard_topics_path(messageboard)
+      redirect_to thredded.messageboard_topics_path(messageboard)
     end
 
     def topic

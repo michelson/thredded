@@ -12,7 +12,7 @@ module Thredded
       authorize @messageboard_group, :create?
 
       if @messageboard_group.save
-        redirect_to root_path, notice: I18n.t('thredded.messageboard_group.saved', name: @messageboard_group.name)
+        redirect_to thredded.root_path, notice: I18n.t('thredded.messageboard_group.saved', name: @messageboard_group.name)
       else
         flash.now[:notice] = @messageboard_group.errors.full_messages.to_sentence
 

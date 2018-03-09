@@ -28,9 +28,14 @@ module Thredded
     def users_by_prefix
       query = params[:q].to_s.strip
       if query.length >= Thredded.autocomplete_min_length
-        DbTextSearch::CaseInsensitive.new(users_scope, Thredded.user_name_column).prefix(query)
-          .where.not(id: thredded_current_user.id)
-          .limit(MAX_RESULTS)
+        User.search( query, 
+          fields: [:name],
+          match: :word_start,
+          page: 1, per_page: 50 
+        )
+        #DbTextSearch::CaseInsensitive.new(users_scope, Thredded.user_name_column).prefix(query)
+        #  .where.not(id: thredded_current_user.id)
+        #  .limit(MAX_RESULTS)
       else
         []
       end

@@ -103,7 +103,7 @@ module Thredded
       @new_topic = Thredded::TopicForm.new(new_topic_params)
       authorize_creating @new_topic.topic
       if @new_topic.save
-        redirect_to messageboard_topics_path(messageboard)
+        redirect_to thredded.messageboard_topics_path(messageboard)
       else
         render :new
       end
@@ -138,7 +138,7 @@ module Thredded
     def destroy
       authorize topic, :destroy?
       topic.destroy!
-      redirect_to messageboard_topics_path(messageboard),
+      redirect_to thredded.messageboard_topics_path(messageboard),
                   notice: t('thredded.topics.deleted_notice')
     end
 

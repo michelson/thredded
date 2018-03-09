@@ -20,7 +20,7 @@
     </p>
     <% if post && post.content != record.post_content %>
       <p class="thredded--post-moderation-record--content-changed-notice">
-        <%= t('thredded.moderation.posts_content_changed_since_moderation_html', post_url: post_permalink_path(post)) %>
+        <%= t('thredded.moderation.posts_content_changed_since_moderation_html', post_url: thredded.post_permalink_path(post)) %>
       </p>
     <% end %>
     <%= content_tag :em, t('thredded.moderation.post_deleted_notice') unless post %>
@@ -28,7 +28,7 @@
   <article class="thredded--post">
     <% post_user_link = capture do %>
       <% if record.post_user %>
-        <%= link_to record.post_user.thredded_display_name, user_moderation_path(record.post_user.id) %>
+        <%= link_to record.post_user.thredded_display_name, thredded.user_moderation_path(record.post_user.id) %>
       <% else %>
         <%= safe_join [record.post_user_name, content_tag(:em, t('thredded.null_user_name'))].compact, ', ' %>
       <% end %>

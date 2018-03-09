@@ -2,16 +2,16 @@
   <nav class="thredded--moderation-navigation">
     <ul class="thredded--moderation-navigation--items">
       <li class="thredded--moderation-navigation--item thredded--moderation-navigation--pending">
-        <%= link_to t('thredded.nav.moderation_pending'), pending_moderation_path %>
+        <%= link_to t('thredded.nav.moderation_pending'), thredded.pending_moderation_path %>
       </li>
       <li class="thredded--moderation-navigation--item thredded--moderation-navigation--history">
-        <%= link_to t('thredded.nav.moderation_history'), moderation_history_path %>
+        <%= link_to t('thredded.nav.moderation_history'), thredded.moderation_history_path %>
       </li>
       <li class="thredded--moderation-navigation--item thredded--moderation-navigation--activity">
-        <%= link_to t('thredded.nav.moderation_activity'), moderation_activity_path %>
+        <%= link_to t('thredded.nav.moderation_activity'), thredded.moderation_activity_path %>
       </li>
       <li class="thredded--moderation-navigation--item thredded--moderation-navigation--users">
-        <%= link_to t('thredded.nav.moderation_users'), users_moderation_path %>
+        <%= link_to t('thredded.nav.moderation_users'), thredded.users_moderation_path %>
       </li>
     </ul>
     <%= render 'users_search_form' %>
